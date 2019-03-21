@@ -1,0 +1,74 @@
+<div class="all-cards">
+
+
+  <mat-card *ngFor="let post of (news|async)" [ngClass]="{'example-card': true, 'news-feed-card-mobile': (isHandset$ | async), 'news-feed-card-web': !(isHandset$ | async)}">
+
+    <mat-card-header>
+      <img mat-card-avatar src="{{ post.data().userPhoto }}" alt="Photo of the user">
+      <mat-card-title>{{post.data().userName}}</mat-card-title>
+      <mat-card-subtitle>{{ post.data().createdAt | amTimeAgo }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="basic-info">
+
+      <div class="example-full-width">
+        <div style="padding-bottom:1.5% ">
+          <mat-label style="font-weight: bold; font-size: 1.1em">{{post.data().requestType}}</mat-label>
+        </div>
+        <mat-card-content style="width:100%">
+          <p>
+            {{post.data().description}}
+          </p>
+        </mat-card-content>
+      </div>
+
+      <div class="image-holder">
+        <mat-card-content imagecat>
+          <div class="franco image-trim">
+            <img src="{{post.data().photo}}" class="image-holder"> <br />
+          </div>
+        </mat-card-content>
+      </div>
+
+      <div class="example-full-width card-bottom">
+
+        <div style="padding-bottom:1.5% ">
+          <mat-label style="font-weight: bold;">Contact Info</mat-label>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <mat-card-content>
+
+            <mat-icon class="green-icon">phone</mat-icon>
+            <a href="tel:+20{{post.data().mobile}}" style="float:right; padding: 4px 0 0 6px;text-decoration: none;cursor: pointer;">+20{{post.data().mobile}}</a>
+          </mat-card-content>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <mat-card-content>
+            <mat-icon class="blue-icon">mail</mat-icon>
+            <a href="mail:{{post.data().email}}" style="float:right; padding: 4px 0 0 6px;text-decoration: none;cursor: pointer;">{{post.data().email}}</a>
+          </mat-card-content>
+
+        </div>
+        <div style="display: flex; align-items: center;">
+          <mat-card-content>
+            <mat-icon href="#" class="red-icon" (click)="openMaps(post.data().userLocation)">location_on</mat-icon>
+            <div style="float:right; padding: 6px 0 0 4px;" (click)="openMaps(post.data().userLocation)">Get Directions</div>
+          </mat-card-content>
+
+        </div>
+        <button mat-button style="margin-left:auto;width: 48px;" matTooltip="Upvote" matTooltipPosition="below">
+          <mat-icon>arrow_upward</mat-icon> 150
+        </button>
+        <!-- Ups-->
+        <mat-card-content style="float:right;">
+
+        </mat-card-content>
+      </div>
+
+    </mat-card-content>
+
+
+  </mat-card>
+
+
+</div>

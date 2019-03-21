@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{data2.name}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content style="width:100%!important">
+    <mat-form-field class="example-full-width">
+      <textarea matInput id="theMsg" placeholder="Leave a message"></textarea>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions style="display: flex; flex-direction: row-reverse; width: 91%">
+    <button mat-raised-button color="primary" (click)="notify(data2.uid)">Send</button>
+    <button mat-button (click)="onNoClick()">Discard</button>
+  </mat-card-actions>
+</mat-card>
